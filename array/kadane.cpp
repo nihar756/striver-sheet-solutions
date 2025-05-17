@@ -29,3 +29,26 @@ int maxSubArray(vector<int>& nums) {
             dp[i] = max(nums[i], nums[i] + dp[i-1]);        
         return *max_element(begin(dp), end(dp));
     }
+
+    ////print the max sum subarray////
+
+    void printMaxSubarr(vector<int>&nums){
+        int maxi=INT_MIN;
+        int startIdx=-1,endIdx=-1;
+        int n=nums.size();
+        int sum=0;
+        int start=0;
+        for(int i=0;i<n;i++){
+            if(sum==0)start=i;
+            sum+=nums[i];
+            if(sum>maxi){
+                startIdx=start;
+                endIdx=i;
+            }
+            maxi=max(maxi,sum);
+
+        }
+        for(int i=startIdx;i<=endIdx;i++){
+            cout<<nums[i]<<" ";
+        }cout<<endl;
+    }
